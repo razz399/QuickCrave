@@ -10,6 +10,7 @@ import menu_5 from './menu_5.png'
 import menu_6 from './menu_6.png'
 import menu_7 from './menu_7.png'
 import menu_8 from './menu_8.png'
+import menu_9 from './menu_9.png'
 
 import food_1 from './food_1.png'
 import food_2 from './food_2.png'
@@ -114,6 +115,10 @@ export const menu_list = [
     {
         menu_name: "Noodles",
         menu_image: menu_8
+    },
+    {
+        menu_name: "Non Veg",
+        menu_image: menu_9
     }]
 
 export const food_list = [
@@ -346,5 +351,37 @@ export const food_list = [
         price: 15,
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Noodles"
+    },
+    {
+        _id: "33",
+        name: "Pure Veg Cake Salad",
+        image: food_4,
+        price: 18,
+        description: "Food provides essential nutrients for overall health and well-being",
+        category: "Non Veg"
+    },
+    {
+        _id: "34",
+        name: "Mutton Biryani",
+        image: food_7,
+        price: 28,
+        description: "Food provides essential nutrients for overall health and well-being",
+        category: "Non Veg"
+    },
+    {
+        _id: "35",
+        name: "Tandoori Chicken",
+        image: food_28,
+        price: 26,
+        description: "Food provides essential nutrients for overall health and well-being",
+        category: "Non Veg"
+    },
+    {
+        _id: "36",
+        name: "Fish Curry",
+        image: food_13,
+        price: 24,
+        description: "Food provides essential nutrients for overall health and well-being",
+        category: "Non Veg"
     }
 ]
