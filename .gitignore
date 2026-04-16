@@ -1,0 +1,83 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+npm-error.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production.local
+.env.development.local
+.env.test.local
+!.env.example
+
+# Build outputs
+dist/
+build/
+.vite/
+out/
+.cache/
+
+# IDE & Editor
+.vscode/
+.idea/
+.vs/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.classpath
+.c9/
+*.tern-port
+
+# Testing
+coverage/
+.nyc_output/
+
+# Uploads (store images locally, don't push)
+uploads/
+backend/uploads/
+
+# Temporary files
+temp.json
+temp_image.png
+create_logo.py
+*.tmp
+*.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+dist/
+build/
+
+# OS Specific
+# macOS
+.AppleDouble
+.LSOverride
+.TemporaryItems
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory

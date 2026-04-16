@@ -1,0 +1,107 @@
+.explore-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.explore-menu h1 {
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: max(2.5vw, 28px);
+  position: relative;
+  display: inline-block;
+}
+
+.explore-menu-text {
+  max-width: 60%;
+  color: var(--text-light);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.explore-menu-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+  margin: 30px 0;
+  padding-bottom: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+/* Hide scrollbar for cleaner look */
+.explore-menu-list::-webkit-scrollbar {
+  display: none;
+}
+
+.explore-menu-list-item {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.explore-menu-list-item img {
+  width: 8vw;
+  min-width: 90px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  border: 4px solid transparent;
+}
+
+.explore-menu-list-item:hover img {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.explore-menu-list-item p {
+  color: var(--text-light);
+  font-size: max(1.2vw, 15px);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.explore-menu-list-item:hover p {
+  color: var(--primary-color);
+}
+
+.explore-menu hr {
+  margin: 20px 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--border-color), transparent);
+  border: none;
+}
+
+.explore-menu-list-item .active {
+  border: 4px solid var(--primary-color);
+  padding: 3px;
+  box-shadow: 0 8px 20px rgba(255, 76, 36, 0.3);
+  transform: scale(1.05);
+}
+
+@media (max-width: 1050px) {
+  .explore-menu-text {
+    max-width: 100%;
+    font-size: 15px;
+  }
+  .explore-menu-list {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 750px) {
+  .explore-menu h1 {
+    font-size: 24px;
+  }
+  .explore-menu-list-item img {
+    min-width: 70px;
+  }
+}
