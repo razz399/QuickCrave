@@ -1,17 +1,17 @@
 import foodModel from "../models/foodModel.js";
 import userModel from "../models/userModel.js";
-import fs from "fs";
+import cloudinary from "../config/cloudinary.js";
 
 // add food items
 
 const addFood = async (req, res) => {
-  let image_filename = `${req.file.filename}`;
+  let image_url = req.file.path; // Cloudinary URL
   const food = new foodModel({
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
     category: req.body.category,
-    image: image_filename,
+    image: image_url,
   });
   try {
     let userData = await userModel.findById(req.body.userId);
@@ -44,7 +44,14 @@ const removeFood = async (req, res) => {
     let userData = await userModel.findById(req.body.userId);
     if (userData && userData.role === "admin") {
       const food = await foodModel.findById(req.body.id);
-      fs.unlink(`uploads/${food.image}`, () => {});
+      
+      // Delete from Cloudinary
+      if (food.image) {
+        const publicId = food.image.split('/').pop().split('.')[0];
+        const folder = "QuickCrave/foods";
+        await cloudinary.uploader.destroy(`${folder}/${publicId}`);
+      }
+      
       await foodModel.findByIdAndDelete(req.body.id);
       res.json({ success: true, message: "Food Removed" });
     } else {

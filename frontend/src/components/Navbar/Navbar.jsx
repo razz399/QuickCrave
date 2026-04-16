@@ -7,12 +7,14 @@ import { toast } from "react-toastify";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
+  const [showDropdown, setShowDropdown] = useState(false);
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
   const navigate=useNavigate();
 
   const logout=()=>{
     localStorage.removeItem("token");
     setToken("");
+    setShowDropdown(false);
     toast.success("Logout Successfully")
     navigate("/");
   }
@@ -63,12 +65,14 @@ const Navbar = ({ setShowLogin }) => {
           <button onClick={() => setShowLogin(true)}>sign in</button>
         ) : (
           <div className="navbar-profile">
-            <img src={assets.profile_icon} alt="" />
-            <ul className="nav-profile-dropdown">
-              <li onClick={()=>navigate("/myorders")}><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
-              <hr />
-              <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
-            </ul>
+            <img src={assets.profile_icon} alt="" onClick={() => setShowDropdown(!showDropdown)} />
+            {showDropdown && (
+              <ul className="nav-profile-dropdown">
+                <li onClick={()=>{navigate("/myorders"); setShowDropdown(false);}}><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
+                <hr />
+                <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+              </ul>
+            )}
           </div>
         )}
       </div>

@@ -117,16 +117,15 @@
   position: relative;
 }
 
+.navbar-profile img {
+  cursor: pointer;
+}
+
 .nav-profile-dropdown {
   position: absolute;
-  display: none;
   right: 0;
   top: 150%;
   z-index: 10;
-}
-
-.navbar-profile:hover .nav-profile-dropdown {
-  display: flex;
   flex-direction: column;
   gap: 12px;
   background: white;
