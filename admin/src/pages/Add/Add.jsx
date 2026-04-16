@@ -27,6 +27,12 @@ const Add = ({url}) => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+    
+    if (!image) {
+      toast.error("Please select an image");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("description", data.description);
@@ -34,18 +40,28 @@ const Add = ({url}) => {
     formData.append("category", data.category);
     formData.append("image", image);
 
-    const response = await axios.post(`${url}/api/food/add`, formData,{headers:{token}});
-    if (response.data.success) {
-      setData({
-        name: "",
-        description: "",
-        price: "",
-        category: "Salad",
+    try {
+      const response = await axios.post(`${url}/api/food/add`, formData, {
+        headers: {
+          token: token,
+          "Content-Type": "multipart/form-data",
+        },
       });
-      setImage(false);
-      toast.success(response.data.message);
-    } else {
-      toast.error(response.data.message);
+      if (response.data.success) {
+        setData({
+          name: "",
+          description: "",
+          price: "",
+          category: "Salad",
+        });
+        setImage(false);
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error adding food:", error.message);
+      toast.error(error.response?.data?.message || "Error adding food");
     }
   };
   useEffect(()=>{
