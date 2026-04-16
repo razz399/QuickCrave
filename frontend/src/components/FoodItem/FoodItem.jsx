@@ -6,17 +6,22 @@ import { StoreContext } from "../../context/StoreContext";
 const FoodItem = ({ id, name, price, description, image }) => {
   const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext); 
 
-  // Handle broken images (common with ephemeral host storage like Render free tier)
+  // Handle broken images
   const handleImageError = (e) => {
-    e.target.onerror = null; // Prevent infinite loops
+    e.target.onerror = null;
     e.target.src = "https://placehold.co/400x300/f0f0f0/ff4c24?text=Food+Image";
   };
+
+  // Use Cloudinary URL directly if it's a full URL, otherwise construct relative path
+  const imageSource = image && image.startsWith("http") 
+    ? image 
+    : url + "/images/" + encodeURIComponent(image);
 
   return (
     <div className="food-item">
       <div className="food-item-img-container">
         <img 
-          src={url + "/images/" + encodeURIComponent(image)} 
+          src={imageSource} 
           alt={name} 
           className="food-item-image" 
           onError={handleImageError}
