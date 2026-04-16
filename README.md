@@ -27,31 +27,17 @@ To run this project locally, follow the installation steps below.
 - Role-Based Identification
 - Beautiful Alerts
 
-## Screenshots
-
-![Hero](https://i.ibb.co/59cwY75/food-hero.png)
-- Hero Section
-
-![Products](https://i.ibb.co/JnNQPyQ/food-products.png)
-- Products Section
-
-![Cart](https://i.ibb.co/t2LrQ8p/food-cart.png)
-- Cart Page
-
-![Login](https://i.ibb.co/s6PgwkZ/food-login.png)
-- Login Popup
-
 ## Run Locally
 
 Clone the project
 
 ```bash
-    git clone https://github.com/Mshandev/Food-Delivery
+    git clone https://github.com/razz399/QuickCrave
 ```
 Go to the project directory
 
 ```bash
-    cd Food-Delivery
+    cd QuickCrave
 ```
 Install dependencies (frontend)
 
